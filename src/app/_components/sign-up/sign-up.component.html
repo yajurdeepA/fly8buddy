@@ -1,0 +1,81 @@
+<div class="container mt-5">
+  <div *ngIf= "serverError" style="color:red;">{{serverError}}</div>
+<form class="row g-3" #registrationForm = "ngForm" (ngSubmit) = "registrationForm.valid && createUser(registrationForm)"  novalidate>
+    <div class="col-md-6">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="firstName"  name = "firstName" #firstName="ngModel" required ngModel [ngClass] = "{'is-invalid': registrationForm.submitted && firstName.errors}">
+        
+        <div *ngIf= "firstName.errors" class="invalid-feedback">
+          <p *ngIf = "firstName.errors && firstName.errors['required']">Firstname is required</p>
+          
+        </div> 
+       
+      </div>
+      <div class="col-md-6">
+        <label for="lastName" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="lastName" name = "lastName" required #lastName="ngModel" ngModel required [ngClass]= "{'is-invalid' : registrationForm.submitted && lastName.errors}">
+        <div *ngIf= "lastName.errors && lastName.errors['required']" class="invalid-feedback">
+            Lastname is required.
+        </div>
+      </div>
+    <div class="col-md-6">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" id = "email" class="form-control" name="email" required email #email="ngModel" ngModel required email [ngClass] = "{'is-invalid':registrationForm.submitted && email.errors}">
+      <div *ngIf= "email.errors" class="invalid-feedback">
+          <div *ngIf= "email.errors && email.errors['required']">
+            Email is required.
+          </div>
+          <div *ngIf = "email.errors && email.errors['email']">
+           Invalid Email  
+          </div>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name = "password" required minlength="6" #password="ngModel" ngModel [ngClass] = "{'is-invalid' : registrationForm.submitted && password.errors}">
+      <div *ngIf = "password.errors && password.errors['required']" class="invalid-feedback">
+        Password is required
+      </div>
+      <div *ngIf = "password.errors && password.errors['minlength']" class="invalid-feedback">
+        Password should be minimum 6 characters
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="address1" class="form-label">Address</label>
+      <input type="text" class="form-control" id="address1" placeholder="1234 Main St" name = "address1" required #address1="ngModel" ngModel [ngClass] = "{'is-invalid':registrationForm.submitted && address1.errors}">
+      <div *ngIf= "address1.errors && address1.errors['required']" class="invalid-feedback">
+        Address is required.
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="address2" class="form-label">Address 2</label>
+      <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor" name = "address2"  #address2="ngModel" ngModel>
+    </div>
+    <div class="col-md-6">
+      <label for="city" class="form-label">City</label>
+      <input type="text" class="form-control" id="city" name = "city" required #city="ngModel" ngModel [ngClass] = "{'is-invalid':registrationForm.submitted && city.errors}" >
+      <div *ngIf= "city.errors && city.errors['required']" class="invalid-feedback">
+        City is required.
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="state" class="form-label">State</label>
+      <input type="text" class="form-control" id="state" name = "state" required #state="ngModel" ngModel [ngClass] = "{'is-invalid':registrationForm.submitted && state.errors}">
+      <div *ngIf= "state.errors && state.errors['required']" class="invalid-feedback">
+        State is required.
+      </div>
+    </div>
+    <div class="col-md-2">
+      <label for="zip" class="form-label">Zip</label>
+      <input type="text" class="form-control" id="zip" name = "zip" required #zip="ngModel" ngModel [ngClass] = "{'is-invalid':registrationForm.submitted && zip.errors}">
+      <div *ngIf= "zip.errors && zip.errors['required']" class="invalid-feedback">
+        Zip is required.
+      </div>
+    </div>
+    
+    <div class="col-12">
+      <button type="submit"  class="btn btn-primary mb-5">Sign Up</button>
+    </div>
+  </form>
+</div>

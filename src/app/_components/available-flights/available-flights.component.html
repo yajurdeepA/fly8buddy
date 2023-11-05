@@ -1,0 +1,18 @@
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-4" *ngFor="let route of routes">
+                <div class="card-body text-center" *ngIf="route.route != 'default'">
+                    <p>Route: <b>{{route.route}}</b>
+                        <p>Dates:</p>
+                        <ul>
+                            <li *ngFor="let date of route.availableDates">
+                                {{date | date}} <hr>
+                            </li>
+                            
+                        </ul> 
+                </div> 
+            </div>
+        </div>
+    </div>
+</section>

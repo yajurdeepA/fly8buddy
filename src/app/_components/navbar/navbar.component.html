@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a [routerLink] = "'home'"><img src = "../../../assets/logo1-v1.png" width="100" height="50"/></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="'/home'" [routerLinkActive]="['active-link']">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"[routerLink]="'/flight'" [routerLinkActive]="['active-link']">Flights</a>
+          </li>
+
+            
+           
+                    
+        </ul>
+        
+          <ul *ngIf = "isLoggedOut"class="navbar-nav ml-lg-auto ml-0 d-flex flex-row mt-lg-0 mt-2">
+            <li class="nav-item">
+                
+                <a  class="btn btn-primary mx-2" routerLink="/login" [routerLinkActive]="['active-link']" (click)="openLoginModal()">Login</a> 
+                                           
+              </li>               
+              <li class="nav-item">
+                <a class="btn btn-primary" routerLink="/signup" [routerLinkActive]="['active-link']">SignUp</a>
+                
+              </li> 
+
+
+          </ul>
+          <ul *ngIf = "isLoggedIn" class="navbar-nav ml-lg-auto ml-0 d-flex flex-row mt-lg-0 mt-2">
+            <li class="nav-item"><a  [routerLink]= "'my-details'" class="btn btn-primary " >My Details</a> </li> &nbsp;
+            <li class="nav-item"><a  [routerLink]= "'my-bookings'" class="btn btn-primary " >My Bookings</a> </li> &nbsp;
+            <li class="nav-item"><button  (click)="logout()" class="btn btn-primary " >Logout</button> </li>  
+            
+            </ul>
+
+       
+       
+       
+      </div>
+    </div>
+  </nav>
+  
